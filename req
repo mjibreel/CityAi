@@ -1,0 +1,72 @@
+# pip install Flask-Babel
+# pip install Flask
+# pip install python     
+# pip3 install python    
+# pip install  os
+# pip install webbrowser
+# pip install speech_recognition 
+#  from datetime import datetime, timedelta
+#  from flask import Flask, render_template, request, redirect, url_for, jsonify  
+# pip install time
+# from google.cloud import texttospeech
+# pip install pyttsx3
+# pip install google-cloud-texttospeech
+# curl https://sdk.cloud.google.com | bash
+# exec -l $SHELL
+# gcloud init
+# pip install vosk
+# brew install portaudio
+# pip install pyaudio
+# pip install Flask-Bootstrap
+
+# pip install flask-sqlalchemy
+# pip install pymysql  # For MySQL
+# pip install psycopg2  # For PostgreSQL
+
+
+# Flask
+# export FLASK_APP=CityAiFlask.py
+# export Flask_Debog=1
+# mkdir static
+# react native 
+# pip install google-cloud-texttospeech
+
+# creat db
+# rm cityu.db
+
+
+
+# https://www.youtube.com/watch?v=mrjy92pW0kM&ab_channel=LirsTechTips
+
+# Section 1: Fundamentals:
+# 1. React Native Tools
+# 2. Babel JavaScript
+# 3. Flow Language Support
+# 4. ESLint
+# 5. Prettier — JavaScript formatter
+# * Section 2: All the extras:
+# 1. Atom Keymap
+# 2. Auto Close Tag
+# 3. Auto Complete Tag
+# 4. Auto Rename Tag
+# 5. Color Highlight
+# 6. Git Blame
+# 7. Path Intellisense
+# 8. Rainbow Brackets
+# 9. SVG Viewer
+# 10. TODO Highlight
+# 11. change-case
+# 12. Code Spell Checker
+# 13. npm & npm intellisense
+# * Section 3: Theming:
+# 1. Darktooth
+# 2. One Dark (Sublime Babel)
+# 3. Bimbo
+
+
+
+
+# website
+
+# pip freeze 
+

@@ -164,11 +164,11 @@ def recognize_speech_from_mic():
 
 # # Global dictionary to store last interaction times
 user_interactions = {}
-# cityAi = Flask(__name__, template_folder='/Users/jibre/OneDrive/Desktop/NewCityAi/venv/templates', static_folder='/Users/jibre/OneDrive/Desktop/NewCityAi/static')
+# cityAi = Flask(__name__, template_folder='/Users/jibre/OneDrive/Desktop/NewCityAi/templates', static_folder='/Users/jibre/OneDrive/Desktop/NewCityAi/static')
 cityAi = Flask(
     __name__,
-    template_folder=r'C:\Users\jibre\OneDrive\Desktop\cityAi\templates',
-    static_folder=r'C:\Users\jibre\OneDrive\Desktop\cityAi\static')
+    template_folder=r'C:\Users\jibre\OneDrive\Desktop\NewCityAi\templates',
+    static_folder=r'C:\Users\jibre\OneDrive\Desktop\NewCityAi\static')
 
 bootstrap = Bootstrap(cityAi)
 

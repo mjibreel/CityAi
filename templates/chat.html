@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize speech recognition
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+
+            // Set recognition parameters
+            recognition.continuous = false; // Stop automatically after one phrase
+            recognition.interimResults = false; // Do not provide interim results
+            recognition.lang = 'en-US'; // Language
+
+            recognition.onstart = function () {
+                console.log('Speech recognition started');
+            };
+
+            recognition.onspeechend = function () {
+                recognition.stop();
+                console.log('Speech recognition ended');
+            };
+
+            recognition.onresult = function (event) {
+                const speechResult = event.results[0][0].transcript;
+                console.log('Speech recognized:', speechResult);
+                // Send the recognized text to the server
+                fetch('/activate_assistant', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ transcript: speechResult })
+                }).then(response => response.json())
+                    .then(data => console.log(data.message))
+                    .catch(error => console.error('Error:', error));
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            // Start recognition
+            recognition.start();
+        });
+
+            function activateAssistant() {
+                // Make a request to your server to start handle_query
+                fetch('/activate_assistant')
+                    .then(response => response.json())
+                    .then(data => console.log(data.message));
+
+                fetch('/activate_assistant', {
+                    method: 'POST'
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById('response').textContent = data.response;
+                    })
+                    .catch(error => console.error('Error:', error));
+            }
+        
+            
+
+            // let play = document.querySelector(".audio");
+            // function playMusic() {
+            // let audio = new Audio("https://youtu.be/2KBFD0aoZy8?si=AUOPIsO8SoqTnsrG");
+            // audio.play();
+            // }
+            // play.addEventListener("keydown", playMusic);
+           
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: black;
+        }
+
+        .music {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .music .bar {
+            width: 12px;
+            height: 10px;
+            border-radius: 10px;
+            background: white;
+            animation: loader 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loader {
+            0%,
+            100% {
+                height: 2px;
+            }
+
+            50% {
+                height: 80px;
+            }
+        }
+
+        .music .bar:nth-child(1) {
+            background: purple;
+            animation-delay: 1s;
+        }
+
+        .music .bar:nth-child(2) {
+            background: crimson;
+            animation-delay: 0.8s;
+        }
+
+        .music .bar:nth-child(3) {
+            background: deeppink;
+            animation-delay: 0.6s;
+        }
+
+        .music .bar:nth-child(4) {
+            background: orange;
+            animation-delay: 0.4s;
+        }
+
+        .music .bar:nth-child(5) {
+            background: gold;
+            animation-delay: 0.2s;
+        }
+
+        .music .bar:nth-child(6) {
+            background: gold;
+            animation-delay: 0.2s;
+        }
+
+        .music .bar:nth-child(7) {
+            background: orange;
+            animation-delay: 0.4s;
+        }
+
+        .music .bar:nth-child(8) {
+            background: deeppink;
+            animation-delay: 0.6s;
+        }
+
+        .music .bar:nth-child(9) {
+            background: crimson;
+            animation-delay: 0.8s;
+        }
+
+        .music .bar:nth-child(10) {
+            background: purple;
+            animation-delay: 1s;
+        }
+    </style>
+</head>
+
+<body onload="speak('Hello, I am City U, your voice assistant from City University. How can I assist you today?')" >
+
+    <div class="music" action="/start_query_chat"  >
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+    <div class="audio"></div>
+
+
+   
+</body>
+
+</html>

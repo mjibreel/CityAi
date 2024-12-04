@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Arabic</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+     <script>
+
+        // open mic
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize speech recognition
+            const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+            const recognition = new SpeechRecognition();
+
+            // Set recognition parameters
+            recognition.continuous = false; // Stop automatically after one phrase
+            recognition.interimResults = false; // Do not provide interim results
+            recognition.lang = 'en-US'; // Language
+
+            recognition.onstart = function () {
+                console.log('Speech recognition started');
+            };
+
+            recognition.onspeechend = function () {
+                recognition.stop();
+                console.log('Speech recognition ended');
+            };
+
+            recognition.onresult = function (event) {
+                const speechResult = event.results[0][0].transcript;
+                console.log('Speech recognized:', speechResult);
+                // Send the recognized text to the server
+                fetch('/start_query_english', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ transcript: speechResult })
+                }).then(response => response.json())
+                    .then(data => console.log(data.message))
+                    .catch(error => console.error('Error:', error));
+            };
+
+            recognition.onerror = function (event) {
+                console.error('Speech recognition error:', event.error);
+            };
+
+            // Start recognition
+            recognition.start();
+        });
+
+        // start_query_english
+
+        document.addEventListener("DOMContentLoaded", function() {
+            // Make a request to your server to start handle_query
+            fetch('/start_query_arabic')
+                .then(response => response.json())
+                .then(data => console.log(data.message));
+        });
+
+// multi clickl
+
+
+    </script>
+
+        <style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            /* background-color: #f5f5f5; */
+            background: black;
+
+        }
+
+
+
+        .button {
+            padding: 15px 25px;
+            margin: 10px;
+            width: 200px;
+            height: 60px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .wrapper {
+        height: 15vh;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        color: #f5f5f5;
+        }
+
+        .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* flex-direction: column;  Align items in a column */
+        height: 80vh;
+        }
+
+        .music {
+            width: 300px;
+            height: 200px;
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .music .bar {
+            width: 12px;
+            height: 10px;
+            border-radius: 10px;
+            background: white;
+            animation: loader 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loader {
+            0%,
+            100% {
+                height: 2px;
+            }
+
+            50% {
+                height: 80px;
+            }
+        }
+
+        .music .bar:nth-child(1) {
+            background: purple;
+            animation-delay: 1s;
+        }
+
+        .music .bar:nth-child(2) {
+            background: crimson;
+            animation-delay: 0.8s;
+        }
+
+        .music .bar:nth-child(3) {
+            background: deeppink;
+            animation-delay: 0.6s;
+        }
+
+        .music .bar:nth-child(4) {
+            background: orange;
+            animation-delay: 0.4s;
+        }
+
+        .music .bar:nth-child(5) {
+            background: gold;
+            animation-delay: 0.2s;
+        }
+
+        .music .bar:nth-child(6) {
+            background: gold;
+            animation-delay: 0.2s;
+        }
+
+        .music .bar:nth-child(7) {
+            background: orange;
+            animation-delay: 0.4s;
+        }
+
+        .music .bar:nth-child(8) {
+            background: deeppink;
+            animation-delay: 0.6s;
+        }
+
+        .music .bar:nth-child(9) {
+            background: crimson;
+            animation-delay: 0.8s;
+        }
+
+        .music .bar:nth-child(10) {
+            background: purple;
+            animation-delay: 1s;
+        }
+
+        .circular-button {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background-color: #3498db; /* Change the color as needed */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .mic-icon {
+      font-size: 90px;
+    }
+
+    </style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+    <h1>مساعدك الشخصي لجامعة سيتي    </h1>
+
+    <p>اضغط الازرار لتعرف المزيد عن جامعه سيتي</p></div>
+
+
+
+
+
+   <div class="center">
+  
+
+     <!-- <form  method="post"> -->
+        <button  id="register_arabicButton" class="button" method="post">
+             <a href="/templates/register_arabic.html" style="color: inherit; text-decoration: none;">التسجيل</a>
+        </button>
+    <!-- </form>  -->
+
+        <script>
+            // register Button
+
+        document.getElementById('register_arabicButton').addEventListener('click', function(event) {
+            registerarabicsendQuery(event.target);
+    });
+
+       function registerArabicsendQuery(button) {
+        button.disabled = true; // Disable the button
+
+        // Your sendQuery logic here, e.g., fetch call to your server
+        fetch('/handle_register', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+            console.log(data.message);
+            // Optionally re-enable the button after a condition is met
+            setTimeout(function() {
+                button.disabled = false;
+            }, 30000); // Re-enable after 30 seconds
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            button.disabled = false; // Re-enable the button on error
+            });
+        }
+       
+        </script>
+
+    <!-- programmeButton -->
+
+     <form action="/handle_programme_arabic" method="post">
+        <button id="programmeButton" class="button" type="submit">التخصصات</button>
+     </form>
+
+     <script>
+        // register Button
+
+    document.getElementById('programmeButton').addEventListener('click', function(event) {
+    programmesendQuery(event.target);
+});
+
+   function programmesendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_programme', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+   
+    </script>
+
+<!-- tellButton -->
+
+     <form action="/handle_tell_me_more_arabic" method="post">
+        <button  id="tellButton" class="button" type="submit">عن جامعه سيتي</button>
+    </form>
+<script>
+            // tell Button
+
+        document.getElementById('tellButton').addEventListener('click', function(event) {
+        tellsendQuery(event.target);
+    });
+
+       function tellsendQuery(button) {
+        button.disabled = true; // Disable the button
+
+        // Your sendQuery logic here, e.g., fetch call to your server
+        fetch('/handle_tell_me_more_arabic', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+            console.log(data.message);
+            // Optionally re-enable the button after a condition is met
+            setTimeout(function() {
+                button.disabled = false;
+            }, 30000); // Re-enable after 30 seconds
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            button.disabled = false; // Re-enable the button on error
+            });
+        }
+       
+        </script>
+
+
+<!-- contactButton -->
+
+    <form action="/handle_contact_arabic"method="post" >
+        <!-- <button   formaction="/handle_contact"method="post" id="myButton" class="button" type="submit" >Contact</button> -->
+        <button  id="contactButton" class="button" type="submit" >التواصل</button>
+    </form>
+
+    <script>
+        // contact Button
+
+    document.getElementById('contactButton').addEventListener('click', function(event) {
+    contactsendQuery(event.target);
+});
+
+   function contactsendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_contact_arabic', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+   
+    </script>
+
+</div>
+
+    <form action="/handle_query"method="post" >
+       <button class="circular-button">
+        <a href="/templates/chat.html" </a>
+    <i class="fas fa-microphone mic-icon"></i>
+      </button>
+    </form>
+
+  
+    <div class="center">
+
+        <!-- englishButton -->
+
+    <!-- <button formaction="/handle_english" class="button" type="submit">English</button> -->
+    <form action="/handle_english_arabic" method="post"> 
+        <button  id="englishButton" class="button" type="submit">اللغه الانجليزيه</button>
+     </form>
+    <script>
+        // register Button
+
+    document.getElementById('englishButton').addEventListener('click', function(event) {
+    englishsendQuery(event.target);
+});
+
+   function englishsendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_english', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+   
+    </script>
+
+<!-- locationsButton -->
+
+     <form  method="post">
+        <button id="locationssendQuery" class="button" method="post" >
+            <a href="/templates/locations.html" style="color: inherit; text-decoration: none;">الموقع</a>
+            </button>
+     </form> 
+     <script>
+        // locations Button 
+
+//     document.getElementById('locationsButton').addEventListener('click', function(event) {
+//     sendQuery(event.target);
+// });
+
+   function locationssendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_location', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+   
+    </script>
+
+<!-- handle_social_media -->
+   
+     <form action="/handle_social_media_arabic" method="post">
+        <button id="socialButton" method="post" class="button" type="submit"> التواصل الاجتماعي</button>
+    </form>
+    <script>
+        // socialButton
+
+    document.getElementById('socialButton').addEventListener('click', function(event) {
+    socialsendQuery(event.target);
+});
+
+   function socialsendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_social_media_arabic', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+   
+    </script>
+
+    <!-- handle_lms -->
+            
+    <form action="/handle_LMS_arabic" method="post">
+        <button id="lmsButton" method="post" class="button" type="submit">LMS</button>
+    </form>
+    <script>
+        // socialButton
+
+    document.getElementById('lmsButton').addEventListener('click', function(event) {
+    lmssendQuery(event.target);
+    });
+
+    function lmssendQuery(button) {
+    button.disabled = true; // Disable the button
+
+    // Your sendQuery logic here, e.g., fetch call to your server
+    fetch('/handle_LMS_arabic', { method: 'POST' })
+        .then(response => response.json())
+        .then(data => {
+        console.log(data.message);
+        // Optionally re-enable the button after a condition is met
+        setTimeout(function() {
+            button.disabled = false;
+        }, 30000); // Re-enable after 30 seconds
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        button.disabled = false; // Re-enable the button on error
+        });
+    }
+
+    </script>
+
+
+
+</div>
+
+
+
+</body>
+</html>

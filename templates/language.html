@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- <meta charset="UTF-8"> -->
+	<!-- <link rel="stylesheet" type="text.css" href="style.css"> -->
+
+	<title>City U Assistant</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+		rel="stylesheet">
+
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+		integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+		integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+		integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+		crossorigin="anonymous"></script>
+
+	<script>
+
+
+		document.addEventListener("DOMContentLoaded", function () {
+			// Make a request to your server to start handle_query
+			fetch('/start-query')
+				.then(response => response.json())
+				.then(data => console.log(data.message));
+		});
+
+		// button disabled
+		function sendQuery(button) {
+			button.disabled = true; // Disable the button
+
+			// Your sendQuery logic here, e.g., fetch call to your server
+			fetch('/start_query', { method: 'POST' })
+				.then(response => response.json())
+				.then(data => {
+					console.log(data.message);
+					// Optionally re-enable the button after a condition is met
+					setTimeout(function () {
+						button.disabled = false;
+					}, 30000); // Re-enable after 30 seconds
+				})
+				.catch(error => {
+					console.error('Error:', error);
+					button.disabled = false; // Re-enable the button on error
+				});
+		}
+
+		$(document).ready(function () {
+			$('#carouselExampleIndicators').carousel();
+		});
+	</script>
+
+	<style>
+		body {
+			font-family: montserrat;
+			margin: 0;
+			padding: 0;
+			/* background-image: url(img/a7.jpg) ; */
+			background-color: #1e1e1e;
+			/* margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; */
+			/* background-color: #f5f5f5; */
+		}
+
+		.navbar {
+			background-color: rgba(0, 0, 0, 0.3);
+			/* background-color: transparent; */
+			overflow: hidden;
+			position: fixed;
+			top: 0;
+			padding: 0 100px;
+			width: 100%;
+			z-index: 9999;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.navbar a {
+			float: left;
+			display: block;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			color: #ffffff;
+		}
+
+		.navbar a:hover {
+			background-color: #fff;
+			color: #202020;
+		}
+
+		.navbar .logo {
+			float: left;
+			margin-right: 20px;
+			max-width: 10%;
+			max-height: 10%;
+			width: 15px;
+			height: auto;
+
+			/* position: fixed; */
+
+			/* font-size: 24px;
+	font-weight: bold;
+	line-height: 1.8;
+    color: #ffffff; */
+
+		}
+
+		.header-text {
+			text-align: center;
+			display: grid;
+			place-items: auto;
+			/* padding-top: 50px; */
+			height: 100vh;
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9998;
+			color: #ffffff;
+		}
+
+		.text-content h1 {
+			font-size: 80px;
+			text-transform: uppercase;
+		}
+
+		.text-content p {
+			width: 75%;
+			margin: auto;
+			line-height: 1.9;
+		}
+
+		.text-content a {
+			background: #ffffff;
+			display: inline-block;
+			text-decoration: none;
+			padding: 10px 30px;
+			color: #202020;
+			margin: 30px;
+			border-radius: 50px;
+			transition: all 0.5s ease;
+		}
+
+		.text-content a:hover {
+			background: transparent;
+			border: 1px solid #fff;
+			color: #fff;
+		}
+
+		.carouselExampleInterval {
+			list-style: none;
+			margin-top: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			background-color: rgba(0, 0, 0, 0.3);
+			left: 0px;
+			color: transparent;
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: none;
+			opacity: 0;
+			z-index: 0;
+			animation: animate 25s linear infinite 0s;
+		}
+
+		.slides,
+		.slides:after {
+			background-color: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+			position: fixed;
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			z-index: 0;
+		}
+
+		.slides li span {
+			background-color: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3));
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			color: transparent;
+			background-size: cover;
+			background-position: 50% 50%;
+			background-repeat: none;
+			opacity: 0;
+			z-index: 0;
+			animation: animate 25s linear infinite 0s;
+		}
+
+		.slides li:nth-child(1) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a7.jpg);
+
+		}
+
+		.slides li:nth-child(2) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a8.webp);
+			animation-delay: 5s;
+		}
+
+		.slides li:nth-child(3) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a9.jpg);
+			animation-delay: 10s;
+		}
+
+		.slides li:nth-child(4) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a10.jpeg);
+			animation-delay: 15s;
+		}
+
+		.slides li:nth-child(5) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a11.avif);
+			animation-delay: 20s;
+		}
+
+		.slides li:nth-child(6) span {
+			background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(static/img/a12.webp);
+			animation-delay: 25s;
+		}
+
+		@keyframes animate {
+			0% {
+				opacity: 0;
+			}
+
+			8% {
+				opacity: 1;
+				transform: scale(1.05);
+			}
+
+			17% {
+				opacity: 1;
+				transform: scale(1.1);
+			}
+
+			25% {
+				opacity: 0;
+				transform: scale(1.1);
+			}
+
+			100% {
+				opacity: 0;
+			}
+		}
+
+		@media (max-width: 800px) {
+			.navbar .logo {
+				float: none;
+				margin-right: 0;
+				font-size: 35px;
+			}
+
+			.navbar {
+				flex-direction: column;
+				width: 100%;
+				padding: 0;
+				align-items: center;
+			}
+
+			.navbar a {
+				font-size: 18px;
+				padding: 5px 25px;
+			}
+
+			nav {
+				margin-top: 20px;
+			}
+
+			.text-content h1 {
+				font-size: 45px;
+			}
+		}
+
+		@media (max-width: 500px) {
+			.navbar a {
+				font-size: 15px;
+				padding: 8px 12px;
+			}
+
+			.text-content h3 {
+				margin-bottom: 10px;
+			}
+
+			.text-content h1 {
+				font-size: 28px;
+			}
+
+			.text-content p {
+				width: 100%;
+				margin: 15px auto;
+				line-height: 1.5;
+				font-size: 12px;
+			}
+
+			.text-content a {
+				padding: 5px 15px;
+				margin-top: 0px;
+				font-size: 14px;
+			}
+		}
+
+
+		.button {
+			padding: 15px 25px;
+			margin: 10px;
+			width: 200px;
+			height: 60px;
+			border-radius: 30px;
+			border: none;
+			cursor: pointer;
+			font-size: 18px;
+			font-weight: bold;
+			color: black;
+			background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+		}
+
+		.button:hover {
+			transform: translateY(-5px);
+			box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+		}
+
+		.button:active {
+			transform: translateY(0);
+			box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+		}
+
+		#myimage {
+			height: 32px;
+			width: 32px;
+			margin-left: 2%;
+		}
+
+		.wrapper {
+			height: 15vh;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.center {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 15vh;
+		}
+	</style>
+
+
+</head>
+
+<body onload="speak('Hello, I am City U, your voice assistant from City University. How can I assist you today?')">
+
+
+	<div class="navbar">
+		<div class="logo"><img src="static/img/logo-CityU-white.webp"></div>
+		<!-- <div class="logo"><a href="https://www.city.edu.my/"><img src="img/logo-CityU-white.webp"></a></div> -->
+
+		<nav>
+			<a href="#">Home</a>
+			<a href="#">About</a>
+			<a href="#">Faq</a>
+			<a href="#">Contact</a>
+		</nav>
+	</div>
+
+
+	</div>
+
+
+	<div class="header-text">
+
+		<div class="text-content">
+			<h1>City U Assistant</h1>
+			<h2>Click the button to learn more about City u</span></h2>
+			<!-- <a href="#">Learn More</a>  -->
+
+			<a href="/templates/english.html"><img type="image" id="myimage" src="static/img/uk.png">English</a>
+			<!-- <input type="image" id="myimage" src="img/uk.png" /> -->
+
+			<a href="/templates/arabic.html"><img type="image" id="myimage" src="static/img/arab.png">Arabic</a>
+			<!-- <input type="image" id="myimage" src="img/arab.png"  /> -->
+
+			<a href="/templates/malay.html"><img type="image" id="myimage" src="static/img/malay.png">Malay</a>
+			<!-- <input type="image" id="myimage" src="img/malay.png" /> -->
+		</div>
+	</div>
+
+
+
+
+
+	<ul class="slides">
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+		<li><span></span></li>
+	</ul>
+
+
+
+</body>
+
+</html>

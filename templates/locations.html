@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Location</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+    crossorigin="anonymous"></script>
+
+    
+     <script>
+
+           
+        document.addEventListener("DOMContentLoaded", function() {
+            // Make a request to your server to start handle_query
+            fetch('/start_query_locations')
+                .then(response => response.json())
+                .then(data => console.log(data.message));
+        });
+
+    
+        // // button disabled
+        // function sendQuery() {
+        //     // Your sendQuery logic here
+
+        //     // Disable the button to prevent multiple clicks
+        //     button.disabled = true;
+
+        //     // Optionally, re-enable the button after a certain period or based on a condition
+        //     setTimeout(function() {
+        //         button.disabled = false;
+        //     }, 5000); // Re-enable after 5 seconds
+        // }
+    </script>
+
+        <style>
+       body {
+            font-family: montserrat;
+            margin: 0;
+            padding: 0;
+            /* background-image:url(img/a17.webp); */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{{ url_for('static', filename='img/a17.webp') }}");
+
+            background-color: #1e1e1e;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-repeat: none;
+        }
+    
+        .navbar {
+            background-color: rgba(0, 0, 0, 0.5);
+            /* background-color: transparent; */
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            padding: 0 100px;
+            width: 100%;
+            z-index: 9999;
+            display: flex;
+            justify-content: space-between;
+        }
+    
+        .navbar a {
+            float: left;
+            display: block;
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            color: #ffffff;
+        }
+    
+        .navbar a:hover {
+            background-color: #fff;
+            color: #202020;
+        }
+    
+        .navbar .logo {
+            float: left;
+            margin-right: 20px;
+            max-width: 10%;
+            max-height: 10%;
+            width: 15px;
+            height: auto;
+    
+            /* position: fixed; */
+    
+            /* font-size: 24px;
+        	font-weight: bold;
+        	line-height: 1.8;
+            color: #ffffff; */
+    
+        }
+    
+        .header-text {
+            text-align: center;
+            display: grid;
+            place-items: auto;
+            /* padding-top: 50px; */
+            height: 100vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9998;
+            color: #ffffff;
+        }
+    
+        .text-content h1 {
+            font-size: 60px;
+            text-transform: uppercase;
+        }
+    
+        .text-content p {
+            width: 75%;
+            margin: auto;
+            line-height: 1.9;
+        }
+    
+        .text-content a {
+            background: #ffffff;
+            display: inline-block;
+            text-decoration: none;
+            padding: 10px 30px;
+            color: #202020;
+            margin: 30px;
+            border-radius: 50px;
+            transition: all 0.5s ease;
+        }
+    
+        .text-content a:hover {
+            background: transparent;
+            border: 1px solid #fff;
+            color: #fff;
+        }
+    
+    
+        @media (max-width: 800px) {
+            .navbar .logo {
+                float: none;
+                margin-right: 0;
+                font-size: 35px;
+            }
+    
+            .navbar {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+                align-items: center;
+            }
+    
+            .navbar a {
+                font-size: 18px;
+                padding: 5px 25px;
+            }
+    
+            nav {
+                margin-top: 20px;
+            }
+    
+            .text-content h1 {
+                font-size: 45px;
+            }
+        }
+    
+        @media (max-width: 500px) {
+            .navbar a {
+                font-size: 15px;
+                padding: 8px 12px;
+            }
+    
+            .text-content h3 {
+                margin-bottom: 10px;
+            }
+    
+            .text-content h1 {
+                font-size: 28px;
+            }
+    
+            .text-content p {
+                width: 100%;
+                margin: 15px auto;
+                line-height: 1.5;
+                font-size: 12px;
+            }
+    
+            .text-content a {
+                padding: 5px 15px;
+                margin-top: 0px;
+                font-size: 14px;
+            }
+        }
+    
+
+        .button {
+            padding: 15px 25px;
+            margin: 10px;
+            width: 200px;
+            height: 60px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+       
+
+        .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;  /* Align items in a column */
+        height: 40vh;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+<div class="navbar">
+    <!-- <div class="logo"><img src="static/img/logo-CityU-white.webp"></div> -->
+    <div class="logo"><img src="{{ url_for('static', filename='logo-CityU-white.webp') }}"></div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Faq</a>
+        <a href="#">Contact</a>
+    </nav>
+</div>
+
+
+<div class="header-text">
+
+    <div class="text-content">
+        <h1>City U Assistant</h1>
+        <h2>Please Choose a Location</span></h2>
+
+
+   <div class="center">
+   <form action="/handle_location_pj" method="post">
+        <button  class="button" type="submit"> Patling Jaya </button> 
+
+     </form>
+
+
+     <form action="/handle_location_cyber" method="post">
+        <button class="button" type="submit">Cyberjaya</button>
+     </form>
+
+
+     <form action="/handle_location" method="post">
+        <button class="button" type="submit"> Null</button>
+     </form>    
+    </div>
+</div>
+</div>
+
+</body>
+</html>
