@@ -18,7 +18,7 @@ PyAudio==0.2.14
 pygame==2.6.1
 pypiwin32==223
 pyttsx3==2.98
-pywin32==308; platform_system == "Windows"
+pywin32==223; platform_system == "Windows"
 requests==2.32.3
 SpeechRecognition==3.11.0
 SQLAlchemy==2.0.36
