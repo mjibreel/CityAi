@@ -18,7 +18,7 @@ MarkupSafe==3.0.2
 packaging==24.2
 PyAudio==0.2.14
 pygame==2.6.1
-pypiwin32==223
+pypiwin32==308
 pyttsx3==2.98
 pywin32==308
 requests==2.32.3
