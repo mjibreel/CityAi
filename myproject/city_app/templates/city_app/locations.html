@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>English</title>
+
+     <script>
+
+           
+        document.addEventListener("DOMContentLoaded", function() {
+            // Make a request to your server to start handle_query
+            fetch('/start_query_locations')
+                .then(response => response.json())
+                .then(data => console.log(data.message));
+        });
+
+    
+        // // button disabled
+        // function sendQuery() {
+        //     // Your sendQuery logic here
+
+        //     // Disable the button to prevent multiple clicks
+        //     button.disabled = true;
+
+        //     // Optionally, re-enable the button after a certain period or based on a condition
+        //     setTimeout(function() {
+        //         button.disabled = false;
+        //     }, 5000); // Re-enable after 5 seconds
+        // }
+    </script>
+
+        <style>
+      body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+
+
+        .button {
+            padding: 15px 25px;
+            margin: 10px;
+            width: 200px;
+            height: 60px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .wrapper {
+        height: 15vh;
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+        }
+
+        .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;  /* Align items in a column */
+        height: 80vh;
+        }
+
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="wrapper">
+
+    <h1>City U Assistant</h1>
+
+    <p>Click the button to choose a Locatoin .</p></div>
+
+
+
+
+
+   <div class="center">
+   <form action="/handle_location_pj" method="post">
+        <button  class="button" type="submit"> Patling Jaya </button> 
+
+     </form>
+
+
+     <form action="/handle_location_cyber" method="post">
+        <button class="button" type="submit">Cyberjaya</button>
+     </form>
+
+
+     <form action="/handle_location" method="post">
+        <button class="button" type="submit"> Null</button>
+     </form>
+
+
+     
+</div>
+
+
+</body>
+</html>

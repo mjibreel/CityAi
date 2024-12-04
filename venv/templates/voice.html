@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+   
+    <script>
+  </script>
+  
+    <style>
+
+
+
+
+
+/* ---------- */
+        body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background-color: #f5f5f5;
+            }
+    
+    
+    
+            .button {
+                padding: 15px 25px;
+                margin: 10px;
+                width: 200px;
+                height: 60px;
+                border-radius: 30px;
+                border: none;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: bold;
+                color: black;
+                background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+    
+            .button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            }
+    
+            .button:active {
+                transform: translateY(0);
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            }
+    
+    #myimage {
+        height: 30px;
+        width: 30px;
+    }
+            .wrapper {
+              height: 15vh;
+        text-align: center;
+    justify-content: center;
+      align-items: center;
+    }
+    .center{
+    display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 15vh;
+    }
+    
+    
+    /* text box */
+    *,*:after,*:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+
+.voice_to_text{
+  width: 600px;
+  text-align: center;
+}
+
+#convert_text{
+  width: 100%;
+  height: 200px;
+  border-radius: 10px;
+  resize: none;
+  padding: 10px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+
+        </style>
+    <title>City U Voice Assistant</title>
+<!-- Logo -->
+    <!-- <link rel="shortcut icon" href="assets/img/logo.ico" type="image/x-icon">     -->
+
+</head>
+
+<body>
+    <!-- onload="speak('Hello, I am City U, your voice assistant from City University. How can I assist you today?')" -->
+    <!-- <h1>City U Voice Assistant</h1>
+    <div id="response"></div>
+    <button onclick="askQuestion()">Ask a Question</button>
+    <h1>Say bye to end</h1> -->
+    <!-- <button onclick="activateAssistant()">Activate Assistant</button>
+    <div id="response"></div>
+    <script>
+        function activateAssistant() {
+            fetch('/activate_assistant', {
+                method: 'POST'
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('response').innerHTML = data.response;
+            })
+        }
+    </script> -->
+   
+   
+   
+    <div class="center">
+            <h1>City U Voice Assistant</h1> 
+            <!-- <button onclick="activateAssistant()" id="startButton" class="button" type="submit">Start</button> -->
+
+        <!-- <form action="/activate_assistant" method="post">
+            <button onclick="activateAssistant()" id="startButton" class="button" type="submit">Start</button>
+    </form> -->
+    <form   method="post">
+        <button  class="button">
+         <a href="/templates/chat.html" style="color: inherit; text-decoration: none;">Chat</a>
+        </button>
+    </form>
+    </div>
+
+     
+
+
+     <!-- <script>
+         function activateAssistant() {
+            // Make a request to your server to start handle_query
+            fetch('/start_query_chat')
+              .then(response => response.json())
+              .then(data => console.log(data.message));
+
+
+            fetch('/activate_assistant', {
+                 method: 'POST'
+             })
+             .then(response => response.json())
+             .then(data => {
+                 document.getElementById('response').textContent = data.response;
+             });
+         }
+     </script> -->
+
+
+<!-- <h1>Voice to Text Converter</h1>
+<button onclick="startRecording()" class="button" id="recordButton">Start Recording</button>
+<p id="result"></p> -->
+<!-- 
+<script>
+    function startRecording() {
+        const recordButton = document.getElementById('recordButton');
+        const result = document.getElementById('result');
+
+        // Disable the button to prevent multiple clicks
+        recordButton.disabled = true;
+        result.textContent = 'Recording...';
+
+        // Send a request to the Flask backend to start recording
+        fetch('/start-query', { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    result.textContent = `You said: ${data.transcription}`;
+                } else {
+                    result.textContent = `Error: ${data.error}`;
+                }
+                recordButton.disabled = false;
+            })
+            .catch(error => {
+                result.textContent = `Error: ${error}`;
+                recordButton.disabled = false;
+            });
+    }
+</script> -->
+
+    
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
