@@ -966,19 +966,19 @@ def handle_register_arabic():
             speak("برنامج دبلوم جامعة سيتي هو برنامج مكثف لمدة سنة إلى سنتين.", language='ar')
             webbrowser.open("https://city.edu.my/all-programmes/diploma/")
         elif 'bachelor' in register_type or 'undergraduate' in register_type:
-            speak("City University Bachelor Programme is an intensive three to four years programme.")
+            speak("برنامج البكالوريوس في جامعة سيتي هو برنامج مكثف يمتد لثلاثة إلى أربعة أعوام.", language='ar')
             webbrowser.open("https://city.edu.my/all-programmes/bachelor/")
         elif 'master' in register_type or 'postgraduate' in register_type:
-            speak("City University Master Programme is an intensive one to two years programme.")
+            speak("برنامج الماجستير في جامعة سيتي هو برنامج مكثف يمتد لمدة عام إلى عامين.", language='ar')
             webbrowser.open("https://city.edu.my/all-programmes/masters-phd/")
         elif 'phd' in register_type or 'doctorate' in register_type:
-            speak("City University PhD Programme is an intensive three to four years programme.")
+            speak("برنامج الدكتوراه في جامعة سيتي هو برنامج مكثف يمتد لمدة ثلاث إلى أربع سنوات.", language='ar')
             webbrowser.open("https://city.edu.my/all-programmes/masters-phd/")
         elif 'language' in register_type:
-            speak("City University offers a variety of language courses.")
+            speak("جامعة سيتي تقدم مجموعة متنوعة من دورات اللغات.", language='ar')
             webbrowser.open("https://city.edu.my/programme/language-course/general-intensive-english-programme/")
         elif 'executive' in register_type:
-            speak("City University offers various executive programmes.")
+            speak("جامعة سيتي تقدم برامج تنفيذية متنوعة.", language='ar')
             webbrowser.open("https://city.edu.my/all-programmes/continuing-education/")
         else:
             speak("Sorry, I didn't catch that. Please visit our university website for more information.")
@@ -1008,38 +1008,38 @@ def handle_register_diploma_arabic():
 @cityAi.route("/handle_register_bachelor_arabic", methods=["POST"])
 def handle_register_bachelor_arabic():
     webbrowser.open("https://city.edu.my/all-programmes/bachelor/")
-    speak("City University Bachelor Programme is an intensive three to four years programme.")
+    speak("برنامج البكالوريوس في جامعة سيتي هو برنامج مكثف يمتد لثلاثة إلى أربعة أعوام.", language='ar')
     return render_template("english.html")
 
 
 @cityAi.route("/handle_register_master_arabic", methods=["POST"])
 def handle_register_master_arabic():
     webbrowser.open("https://city.edu.my/all-programmes/masters-phd/")
-    speak("City University Master Programme is an intensive one to two years programme.")
+    speak("برنامج الماجستير في جامعة سيتي هو برنامج مكثف يمتد لمدة عام إلى عامين.", language='ar')
     return render_template("english.html")
 
 @cityAi.route("/handle_register_phd_arabic", methods=["POST"])
 def handle_register_phd_arabic():
     webbrowser.open("https://city.edu.my/all-programmes/masters-phd/")
-    speak("City University PhD Programme is an intensive three to four years programme.")
+    speak("برنامج الدكتوراه في جامعة سيتي هو برنامج مكثف يمتد لمدة ثلاث إلى أربع سنوات.", language='ar')
     return render_template("english.html")
 
 
 @cityAi.route("/handle_register_language_arabic", methods=["POST"])
 def handle_register_language_arabic():   
-    speak("City University offers a variety of language courses.")
+    speak("جامعة سيتي تقدم مجموعة متنوعة من دورات اللغات.", language='ar')
 
     webbrowser.open("https://city.edu.my/programme/language-course/general-intensive-english-programme/")
     speak(
-        "We also prepare for IELTS exams and more with experienced faculty and practical applications for academic and professional success."
-    )
+        "نحن أيضًا نُعد الطلاب لاختبارات IELTS والمزيد بمساعدة هيئة تدريس ذات خبرة وتطبيقات عملية لتحقيق النجاح الأكاديمي والمهني."
+   , language='ar' )
     return render_template("english.html")
 
 
 @cityAi.route("/handle_register_executive_arabic", methods=["POST"])
 def handle_register_executive_arabic():
     webbrowser.open("https://city.edu.my/all-programmes/continuing-education/")
-    speak("City University offers various executive programmes.")
+    speak("جامعة سيتي تقدم برامج تنفيذية متنوعة.", language='ar')
     return render_template("english.html")
 
 
